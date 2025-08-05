@@ -12,7 +12,6 @@
 - [Yol 1: Kendi Stake'iniz ile Kurulum](#yol-1-kendi-stakeiniz-ile-kurulum)
 - [Yol 2: Foundation Delegasyonu (Yeni SuperNode Anahtarı)](#yol-2-foundation-delegasyonu-yeni-supernode-anahtarı)
 - [Yol 3: Foundation Delegasyonu (Mevcut Cüzdan Anahtarı)](#yol-3-foundation-delegasyonu-mevcut-cüzdan-anahtarı)
-- [Servis Olarak Çalıştırma](#servis-olarak-çalıştırma)
 - [Doğrulama ve Test](#doğrulama-ve-test)
 - [Sorun Giderme](#sorun-giderme)
 - [Güvenlik Önerileri](#güvenlik-önerileri)
