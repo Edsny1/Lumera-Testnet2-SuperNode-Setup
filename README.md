@@ -136,6 +136,9 @@ supernode init --key-name mySNKey --chain-id lumera-testnet-2
 Not: Bu kodu calıstırdıktan sonra sızden bazı bılgıler ısteyecek;
 
 ⚠️⚠️⚠️ONEMLI: Cuzdan ekleme secenegını kullanın ve valıdator olusturdugunuz cuzdanın kelımelerını gırın yenı cuzdan olusturmayın.
+
+⚠️⚠️⚠️ÖNEMLİ: Lumera Validator Node gRPC portunu aktıf etmenız gerekmekte ("/root/.lumera/config/app.toml") ve belırledıgınız portu gRPC portu olarak gırmelısınız.
+        Ör: Aynı sunucuda SuperNode ve Lumera Valıdator calısıyorsa ve Lumera gRPC portu 11090 ise yazmanız gereken "localhost:11090" farklı sunucuda ise "http://ipadresi:port" seklınde yazmalısınız.
 1. OS seç
 2. 8 hanelı bır sıfre olustur
 3. kurulum yaptıgın sunucu ıp sını gır
@@ -164,7 +167,31 @@ lumerad tx supernode register-supernode \
   --gas-adjustment 1.3 \
   --fees 5000ulume
 ```
+### 1.4. SuperNode Servıs Dosyası Olusturma ve Baslatma
+```bash
+sudo tee /etc/systemd/system/supernode.service <<EOF
+[Unit]
+Description=Lumera SuperNode
+After=network-online.target
 
+[Service]
+ExecStart=/usr/local/bin/supernode start --basedir /root/.supernode
+Restart=on-failure
+RestartSec=5
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target
+EOF
+```
+
+```bash
+sudo systemctl daemon-reexec
+sudo systemctl daemon-reload
+sudo systemctl enable supernode
+sudo systemctl start supernode
+sudo systemctl status supernode
+```
 ---
 
 ## 🏢 Yol 2: Foundation Delegasyonu (Yeni SuperNode Anahtarı)
