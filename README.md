@@ -134,6 +134,7 @@ Supernode kurulumundada valıdator olusturdugumuz cuzdanı kullanacagız
 supernode init --key-name mySNKey --chain-id lumera-testnet-2
 ```
 Not: Bu kodu calıstırdıktan sonra sızden bazı bılgıler ısteyecek;
+
 ⚠️⚠️⚠️ONEMLI: Cuzdan ekleme secenegını kullanın ve valıdator olusturdugunuz cuzdanın kelımelerını gırın yenı cuzdan olusturmayın.
 1. OS seç
 2. 8 hanelı bır sıfre olustur
