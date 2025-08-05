@@ -282,8 +282,7 @@ lumerad tx supernode register-supernode \
   --chain-id lumera-testnet-2 \
   --gas auto \
   --gas-adjustment 1.3 \
-  --fees 5000ulume \
-  --node https://rpc.lumera.io:443
+  --fees 5000ulume
 ```
 
 ---
@@ -342,7 +341,7 @@ echo 'export SUPERNODE_PWD="12341234"' >> ~/.bashrc
 VALOPER=$(lumerad keys show <validator_key_name> --bech val -a)
 
 # SuperNode durumunu kontrol edin
-lumerad query supernode get-super-node $VALOPER --node https://rpc.lumera.io:443
+lumerad query supernode get-super-node $VALOPER
 ```
 
 **Beklenen Durum:** `ACTIVE`  
@@ -357,19 +356,7 @@ curl -s http://<supernode_ip>:4444/health
 curl -s http://<supernode_ip>:8002/health
 ```
 
-### 3. SuperNode Logları Kontrolü
-```bash
-# Son 50 log satırını görüntüle
-journalctl -u supernode -n 50
-
-# Hata loglarını filtrele
-journalctl -u supernode | grep -i error
-
-# Belirli bir zaman aralığındaki loglar
-journalctl -u supernode --since "2025-08-05 10:00:00"
-```
-
-### 4. Performans Kontrolü
+### 3. Performans Kontrolü
 ```bash
 # Sistem kaynak kullanımı
 htop
@@ -412,18 +399,6 @@ supernode start --home ~/.supernode --log-level debug
 # Ağ bağlantısı test
 ping <rpc_node_ip>
 telnet <supernode_ip> 4444
-```
-
-### Log Analizi
-```bash
-# Kritik hataları bul
-journalctl -u supernode | grep -i "fatal\|panic\|error"
-
-# Bağlantı sorunlarını bul
-journalctl -u supernode | grep -i "connection\|network\|timeout"
-
-# Bellek kullanımı kontrolü
-journalctl -u supernode | grep -i "memory\|oom"
 ```
 
 ---
